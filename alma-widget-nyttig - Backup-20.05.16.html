@@ -1,0 +1,87 @@
+<!DOCTYPE html> <!-- HTML5 -->
+<html>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+	.material-icons{vertical-align:-26%}
+	.w3-blue {color:#fff !important; background-color:#00467f !important}
+</style>
+<head>
+	<title>Nyttig (BI)</title>
+</head>
+
+<body id="body" class="w3-light-grey">
+
+<script>
+function myFunction(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+
+
+
+<table>
+<tr>
+<td colspan="2" valign="center">
+<div class="w3-accordion w3-light-grey">
+  <button onclick="myFunction('Demo1')" class="w3-btn-block w3-round-xlarge w3-blue w3-hover-amber"><i class="material-icons w3-xlarge w3-text-white">keyboard</i> Tastatursnarveier</button>
+  <div id="Demo1" class="w3-accordion-content w3-container">
+    <b>Alt+R</b> - Return Items<br/>
+	<b>Alt+P</b> - Pick from Shelf<br/>
+	<b>Alt+W</b> - Manage Patron Services<br/>
+	<b>Ctrl+Alt+S</b> - Scan In Items<br/>
+  </div>
+  <!--
+  <button onclick="myFunction('Demo2')" class="w3-btn-block w3-left-align">Open Section 2</button>
+  <div id="Demo2" class="w3-accordion-content w3-container">
+    <h4>Section 2</h4>
+    <p>Some other text..</p>
+  </div>
+  -->
+</div>
+</td>
+</tr>
+<tr>
+<td>
+	<a class="w3-btn-block w3-round-xlarge w3-blue w3-hover-amber" href="http://libguides.bi.no/almalibguide"  target="_blank">Alma Libguide</a>
+</td>
+<td>
+	<a class="w3-btn-block w3-round-xlarge w3-blue w3-hover-amber" href="http://web.bi.no/info/studinfo2015.nsf/SHlitteratur!OpenForm"  target="_blank">Kursbeskrivelser BI</a>
+</td>
+</tr>
+<tr>
+<td>
+	<a class="w3-btn-block w3-round-xlarge w3-blue w3-hover-amber" href="http://readinglist.bi.edu/"  target="_blank">Interaktive<br/>pensumlister</a>
+</td>
+</tr>
+</table>
+
+
+
+
+<!--
+<div class="w3-dropdown-hover">
+  <button class="w3-btn w3-light-grey w3-border-black">Tastatursnarveier</button>
+  <div class="w3-dropdown-content w3-card-4 w3-light-grey" style="width:300px">
+	<b>Alt+R</b> - Return Items<br/>
+	<b>Alt+P</b> - Pick from Shelf<br/>
+	<b>Alt+W</b> - Manage Patron Services<br/>
+	<b>Ctrl+Alt+S</b> - Scan In Items<br/>
+  </div>
+</div> 
+-->
+
+
+
+
+
+
+</body>
+</html>
