@@ -116,7 +116,7 @@ class Stock:
 	#-#-#--> 2
 	def get_price(self):
 		"""Returns the price of the stock."""
-	 	return self._price
+		return self._price
 
 	def to_list(self):
 		"""Returns all Stock variables as a list."""
