@@ -1,21 +1,21 @@
 import random
 import pandas as pd
 
-###--- 2 ---###
+
 class Fund:
 	""" Class for an equity fund. """
 	# Public class variable (equal for all objects)
 	owner_name = "Broke Brokers Inc."
 
+	#-#-#--> 3
 	# Constructor - initializes object
 	def __init__(self, fund_name, start_cash=100000.0):
 		self._name = fund_name
-		#self._filename = f"data_fund_{''.join(c for c in self._name if c.isalnum())}.csv" # Sløyfe?
 		self._cash = start_cash
 		self._portfolio = {}	# Dict of PortfolioEntry-objects with ticker as key
 	
 	def __str__(self):
-		"""Overriding the built-in string representation of a fund object."""
+		"""Overriding the built-in string representation of a fund object. Returns key fund data as a formatted string."""
 		cash, assets, total = self.get_value()
 		cash = "{:.2f}".format(cash); assets = "{:.2f}".format(assets); total = "{:.2f}".format(total)
 		fund_summary = f"Name: {self._name}\nOwner: {Fund.owner_name}\nCash value: {str(cash)}\nAssets value: {str(assets)}\nTotal value: {str(total)}"
@@ -30,12 +30,16 @@ class Fund:
 			df_portfolio = pd.concat([df_portfolio, entry_df_transp], ignore_index=True)
 		return df_portfolio
 
+	#-#-#--> 4
 	def buy_stock(self, stock, volume):
 		"""Takes a stock object and volume."""
 		ticker, c_name, price = stock.to_list()
+		# Check if stock is already in portfolio
 		if ticker in self._portfolio:
+			# If so, add volume only
 			self._portfolio[ticker].volume += volume
 		else:
+			# If not, make a new entry in the portfolio (PortfolioEntry object)
 			self._portfolio[ticker] = PortfolioEntry(ticker, c_name, price, price, volume)
 		# Update cash holding
 		self._cash = self._cash - volume*price
@@ -79,6 +83,7 @@ class Fund:
 
 class PortfolioEntry:
 	"""Class describing an entry/row in a portfolio."""
+	#-#-#--> 5
 	def __init__(self, ticker, company_name, price_bought, price_now, volume):
 		"""Takes five arguments: Ticker, Company name, Price (bought), Price (now), Volume."""
 		self.ticker = ticker 
@@ -87,19 +92,20 @@ class PortfolioEntry:
 		self.price_now = price_now
 		self.volume = volume
 
+	def get_price_now(self):
+		return self.price_now
+
 	def update_price(self, price_new):
 		self.price_now = price_new
 
+	#-#-#--> 6
 	def to_list(self):
 		"""Returns a list of the variables in this PortfolioEntry."""
 		return [self.ticker,self.company_name,self.price_bought,self.price_now,self.volume]
 
-	def get_price_now(self):
-		return self.price_now
 
 
-
-###--- 1 ---###
+#-#-#--> 1
 class Stock:
 	"""Class describing stocks."""
 	def __init__(self, ticker, company_name, price):
@@ -107,21 +113,10 @@ class Stock:
 		self._company_name = company_name
 		self._price = price
 
-	# def get_price(self): ### 2 ###
-	# 	return self_price
-
-	def get(self, what): ### 3 ###
-		"""Takes variable name as argument, and returns the value of that variable.
-		Valid arguments: ticker, company_name, price.
-		"""
-		if what=='ticker':
-			return self._ticker
-		elif what=='company_name':
-			return self._company_name
-		elif what=='price':
-			return self._price
-		else:
-			return f"ERROR: get() takes argument 'ticker', 'company_name', 'price'.\n {what} given"
+	#-#-#--> 2
+	def get_price(self):
+		"""Returns the price of the stock."""
+	 	return self._price
 
 	def to_list(self):
 		"""Returns all Stock variables as a list."""
